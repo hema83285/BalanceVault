@@ -1,0 +1,81 @@
+/* BalanceVault Design Tokens */
+
+:root {
+  /* ── Color palette ─────────────────────────────── */
+  --color-navy:         #0f1b35;
+  --color-navy-light:   #1a2d50;
+  --color-indigo:       #3730a3;
+  --color-indigo-light: #4f46e5;
+  --color-indigo-pale:  #eef2ff;
+  --color-teal:         #0d9488;
+  --color-teal-light:   #14b8a6;
+  --color-teal-pale:    #f0fdfa;
+
+  --color-green:        #16a34a;
+  --color-green-pale:   #f0fdf4;
+  --color-red:          #dc2626;
+  --color-red-pale:     #fef2f2;
+  --color-yellow:       #d97706;
+  --color-yellow-pale:  #fffbeb;
+
+  --color-white:        #ffffff;
+  --color-surface:      #f8fafc;
+  --color-surface-2:    #f1f5f9;
+  --color-border:       #e2e8f0;
+  --color-border-dark:  #cbd5e1;
+
+  --color-text-primary:   #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted:     #94a3b8;
+  --color-text-on-dark:   #f8fafc;
+
+  /* ── Typography ────────────────────────────────── */
+  --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Consolas', monospace;
+
+  --text-xs:   0.75rem;    /* 12px */
+  --text-sm:   0.875rem;   /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg:   1.125rem;   /* 18px */
+  --text-xl:   1.25rem;    /* 20px */
+  --text-2xl:  1.5rem;     /* 24px */
+  --text-3xl:  1.875rem;   /* 30px */
+  --text-4xl:  2.25rem;    /* 36px */
+
+  --fw-normal:   400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+
+  /* ── Spacing ───────────────────────────────────── */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* ── Radius ────────────────────────────────────── */
+  --radius-sm:  0.25rem;
+  --radius-md:  0.5rem;
+  --radius-lg:  0.75rem;
+  --radius-xl:  1rem;
+  --radius-full: 9999px;
+
+  /* ── Shadows ───────────────────────────────────── */
+  --shadow-sm:  0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md:  0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg:  0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl:  0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* ── Transitions ───────────────────────────────── */
+  --transition: 150ms ease;
+  --transition-slow: 300ms ease;
+
+  /* ── Sidebar ───────────────────────────────────── */
+  --sidebar-width: 260px;
+}

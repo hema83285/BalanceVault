@@ -1,0 +1,71 @@
+Using isolated test database: balancevault_test
+[2026-11-10 21:41:38.760 +0530] [33mWARN[39m: [36mAn account with this email address already exists.[39m
+    [35mrequestId[39m: "9c78a86f-f598-42dd-9752-ef3836e57ce5"
+    [35mcode[39m: "CONFLICT"
+[2026-11-10 21:41:38.794 +0530] [33mWARN[39m: [36mValidation failed[39m
+    [35mrequestId[39m: "2e5e548c-b273-4fa1-8022-85d2e3cab68a"
+    [35mcode[39m: "VALIDATION_ERROR"
+[2026-11-10 21:41:38.827 +0530] [33mWARN[39m: [36mValidation failed[39m
+    [35mrequestId[39m: "f592de7f-365b-428b-a03e-c8ada87ecb0a"
+    [35mcode[39m: "VALIDATION_ERROR"
+[2026-11-10 21:41:40.117 +0530] [33mWARN[39m: [36mInvalid email or password.[39m
+    [35mrequestId[39m: "efd64aff-b369-4655-8a87-438b017737c1"
+    [35mcode[39m: "AUTHENTICATION_ERROR"
+[2026-11-10 21:41:40.426 +0530] [33mWARN[39m: [36mInvalid email or password.[39m
+    [35mrequestId[39m: "aaa37a47-6ae6-45a6-99c2-0ec6e79461ee"
+    [35mcode[39m: "AUTHENTICATION_ERROR"
+[2026-11-10 21:41:40.819 +0530] [33mWARN[39m: [36mNo authentication token provided.[39m
+    [35mrequestId[39m: "9c61810d-86c6-444c-b62b-73f764361fc1"
+    [35mcode[39m: "AUTHENTICATION_ERROR"
+[2026-11-10 21:41:40.831 +0530] [33mWARN[39m: [36mInvalid authentication token.[39m
+    [35mrequestId[39m: "64fec16b-b3d7-4a4d-8cf3-1173cefa5b39"
+    [35mcode[39m: "AUTHENTICATION_ERROR"
+[2026-11-10 21:41:41.159 +0530] [33mWARN[39m: [36mAccess denied. Required role: ADMIN. Your role: ACCOUNT_HOLDER[39m
+    [35mrequestId[39m: "fe159046-d5fa-48ce-8d8f-e647b9c06664"
+    [35mcode[39m: "AUTHORIZATION_ERROR"
+[2026-11-10 21:41:41.186 +0530] [33mWARN[39m: [36mAccess denied. Required role: ADMIN. Your role: ACCOUNT_HOLDER[39m
+    [35mrequestId[39m: "ff71072f-b185-413a-a8f4-4aee8ef883b3"
+    [35mcode[39m: "AUTHORIZATION_ERROR"
+[2026-11-10 21:41:41.208 +0530] [33mWARN[39m: [36mAccess denied. Required role: ADMIN. Your role: ACCOUNT_HOLDER[39m
+    [35mrequestId[39m: "7ab7d751-61fb-4d72-bbb6-973960b38c5d"
+    [35mcode[39m: "AUTHORIZATION_ERROR"
+[2026-11-10 21:41:41.239 +0530] [33mWARN[39m: [36mAccess denied. Required role: ADMIN. Your role: ACCOUNT_HOLDER[39m
+    [35mrequestId[39m: "46d466be-c318-4434-89ea-e08397103ba7"
+    [35mcode[39m: "AUTHORIZATION_ERROR"
+[2026-11-10 21:41:41.279 +0530] [33mWARN[39m: [36mYou do not have permission to access this account.[39m
+    [35mrequestId[39m: "a9c59204-16ac-4d78-9b5d-14006c6504f0"
+    [35mcode[39m: "AUTHORIZATION_ERROR"
+[2026-11-10 21:41:41.407 +0530] [33mWARN[39m: [36mNo authentication token provided.[39m
+    [35mrequestId[39m: "70efb450-f1ab-4c0d-8909-8dd8e81c2588"
+    [35mcode[39m: "AUTHENTICATION_ERROR"
+[2026-11-10 21:41:41.421 +0530] [33mWARN[39m: [36mNo authentication token provided.[39m
+    [35mrequestId[39m: "de9e6f34-ad8f-4aff-928b-8bafd196b2c8"
+    [35mcode[39m: "AUTHENTICATION_ERROR"
+[2026-11-10 21:41:41.436 +0530] [33mWARN[39m: [36mNo authentication token provided.[39m
+    [35mrequestId[39m: "5ee78b1f-192a-4a64-85f9-def31b168018"
+    [35mcode[39m: "AUTHENTICATION_ERROR"
+[2026-11-10 21:41:41.450 +0530] [33mWARN[39m: [36mNo authentication token provided.[39m
+    [35mrequestId[39m: "fe1bd745-0ff9-4a47-9794-f33c179ae19f"
+    [35mcode[39m: "AUTHENTICATION_ERROR"
+[2026-11-10 21:41:41.923 +0530] [33mWARN[39m: [36mInsufficient balance for this transfer[39m
+    [35mrequestId[39m: "c7e82117-db84-4dbb-bd81-3dadda15a3b1"
+    [35mcode[39m: "INSUFFICIENT_FUNDS"
+[2026-11-10 21:41:41.955 +0530] [33mWARN[39m: [36mValidation failed[39m
+    [35mrequestId[39m: "09f63286-27de-44e1-a642-fa3ae32bcbdd"
+    [35mcode[39m: "VALIDATION_ERROR"
+[2026-11-10 21:41:41.983 +0530] [33mWARN[39m: [36mValidation failed[39m
+    [35mrequestId[39m: "c3d2803f-e050-4d21-ac77-36f562616c94"
+    [35mcode[39m: "VALIDATION_ERROR"
+[2026-11-10 21:41:42.022 +0530] [33mWARN[39m: [36mCannot transfer to the same account.[39m
+    [35mrequestId[39m: "0d16f694-b101-4c2d-9028-4ccabfe88d6f"
+    [35mcode[39m: "VALIDATION_ERROR"
+[2026-11-10 21:41:42.081 +0530] [32mINFO[39m: [36mIdempotent replay[39m
+    [35midempotencyKey[39m: "e31f1000-c4aa-4196-8199-a36e701dbbbd"
+    [35mrequestId[39m: "d436b665-23cb-42ac-a878-164f25a92905"
+[2026-11-10 21:41:42.113 +0530] [33mWARN[39m: [36mIdempotency-Key header is required for this operation[39m
+    [35mrequestId[39m: "578aa3c8-5849-4639-848f-b3310d0d00e5"
+    [35mcode[39m: "IDEMPOTENCY_KEY_REQUIRED"
+[2026-11-10 21:41:42.239 +0530] [33mWARN[39m: [36mAccount is not active[39m
+    [35mrequestId[39m: "ccf3a4ff-9d55-4c6a-8362-7a468e0af646"
+    [35mcode[39m: "ACCOUNT_NOT_ACTIVE"
+Test teardown complete.

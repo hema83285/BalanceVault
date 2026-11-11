@@ -1,0 +1,208 @@
+// BalanceVault – Prisma Schema
+// All monetary values stored in paise (integer) to avoid floating-point errors
+// ₹1.00 = 100 paise stored as BigInt 100
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Enums ────────────────────────────────────────────────────────────────────
+
+enum Role {
+  ADMIN
+  ACCOUNT_HOLDER
+}
+
+enum OnboardingStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum AccountStatus {
+  PENDING
+  ACTIVE
+  SUSPENDED
+}
+
+enum TransactionType {
+  DEBIT
+  CREDIT
+}
+
+enum TransactionStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}
+
+enum AuditAction {
+  USER_REGISTERED
+  LOGIN_SUCCESS
+  LOGIN_FAILED
+  LOGOUT
+  ONBOARDING_SUBMITTED
+  ONBOARDING_APPROVED
+  ONBOARDING_REJECTED
+  ACCOUNT_CREATED
+  ACCOUNT_STATUS_CHANGED
+  TRANSFER_INITIATED
+  TRANSFER_COMPLETED
+  TRANSFER_FAILED
+  ADMIN_ACTION
+}
+
+// ─── Models ───────────────────────────────────────────────────────────────────
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String    @map("password_hash")
+  fullName     String    @map("full_name")
+  role         Role      @default(ACCOUNT_HOLDER)
+  isActive     Boolean   @default(true) @map("is_active")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  onboarding   Onboarding?
+  accounts     Account[]
+  auditLogs    AuditLog[]
+  fundingsCreated AccountFunding[] @relation("FundingActor")
+
+  @@map("users")
+}
+
+model Onboarding {
+  id          String           @id @default(cuid())
+  userId      String           @unique @map("user_id")
+  phone       String
+  address     String
+  dateOfBirth DateTime         @map("date_of_birth") @db.Date
+  occupation  String
+  status      OnboardingStatus @default(PENDING)
+  reviewNote  String?          @map("review_note")
+  reviewedBy  String?          @map("reviewed_by")
+  reviewedAt  DateTime?        @map("reviewed_at")
+  createdAt   DateTime         @default(now()) @map("created_at")
+  updatedAt   DateTime         @updatedAt @map("updated_at")
+
+  user        User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("onboardings")
+}
+
+model Account {
+  id              String        @id @default(cuid())
+  userId          String        @map("user_id")
+  accountNumber   String        @unique @map("account_number")
+  balancePaise    BigInt        @default(0) @map("balance_paise")
+  status          AccountStatus @default(ACTIVE)
+  createdAt       DateTime      @default(now()) @map("created_at")
+  updatedAt       DateTime      @updatedAt @map("updated_at")
+
+  user            User          @relation(fields: [userId], references: [id], onDelete: Restrict)
+  debitTxns       Transaction[] @relation("SenderAccount")
+  creditTxns      Transaction[] @relation("ReceiverAccount")
+  ledgerEntries   LedgerEntry[]
+  fundings        AccountFunding[] @relation("FundingAccount")
+
+  @@index([userId])
+  @@map("accounts")
+}
+
+model AccountFunding {
+  id                 String   @id @default(cuid())
+  idempotencyKey     String   @unique @map("idempotency_key")
+  accountId          String   @map("account_id")
+  actorId            String?  @map("actor_id")
+  amountPaise        BigInt   @map("amount_paise")
+  balanceAfterPaise  BigInt   @map("balance_after_paise")
+  note               String?
+  createdAt          DateTime @default(now()) @map("created_at")
+
+  account            Account  @relation("FundingAccount", fields: [accountId], references: [id], onDelete: Restrict)
+  actor              User?    @relation("FundingActor", fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([accountId])
+  @@index([actorId])
+  @@map("account_fundings")
+}
+
+model Transaction {
+  id                String            @id @default(cuid())
+  idempotencyKey    String            @unique @map("idempotency_key")
+  senderAccountId   String            @map("sender_account_id")
+  receiverAccountId String            @map("receiver_account_id")
+  amountPaise       BigInt            @map("amount_paise")
+  status            TransactionStatus @default(PENDING)
+  note              String?
+  failureReason     String?           @map("failure_reason")
+  createdAt         DateTime          @default(now()) @map("created_at")
+  completedAt       DateTime?         @map("completed_at")
+
+  senderAccount     Account           @relation("SenderAccount", fields: [senderAccountId], references: [id], onDelete: Restrict)
+  receiverAccount   Account           @relation("ReceiverAccount", fields: [receiverAccountId], references: [id], onDelete: Restrict)
+  ledgerEntries     LedgerEntry[]
+
+  @@index([senderAccountId])
+  @@index([receiverAccountId])
+  @@index([createdAt])
+  @@map("transactions")
+}
+
+model LedgerEntry {
+  id                  String          @id @default(cuid())
+  transactionId       String          @map("transaction_id")
+  accountId           String          @map("account_id")
+  type                TransactionType
+  amountPaise         BigInt          @map("amount_paise")
+  balanceAfterPaise   BigInt          @map("balance_after_paise")
+  createdAt           DateTime        @default(now()) @map("created_at")
+
+  transaction         Transaction     @relation(fields: [transactionId], references: [id], onDelete: Restrict)
+  account             Account         @relation(fields: [accountId], references: [id], onDelete: Restrict)
+
+  @@index([transactionId])
+  @@index([accountId])
+  @@index([createdAt])
+  @@map("ledger_entries")
+}
+
+model AuditLog {
+  id         String      @id @default(cuid())
+  actorId    String?     @map("actor_id")
+  action     AuditAction
+  targetType String?     @map("target_type")
+  targetId   String?     @map("target_id")
+  outcome    String
+  requestId  String?     @map("request_id")
+  ipAddress  String?     @map("ip_address")
+  userAgent  String?     @map("user_agent")
+  metadata   Json?
+  createdAt  DateTime    @default(now()) @map("created_at")
+
+  actor      User?       @relation(fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([actorId])
+  @@index([action])
+  @@index([createdAt])
+  @@index([targetId])
+  @@map("audit_logs")
+}
+
+model IdempotencyRecord {
+  id           String   @id @default(cuid())
+  key          String   @unique
+  responseBody Json     @map("response_body")
+  statusCode   Int      @map("status_code")
+  createdAt    DateTime @default(now()) @map("created_at")
+  expiresAt    DateTime @map("expires_at")
+
+  @@index([expiresAt])
+  @@map("idempotency_records")
+}

@@ -1,0 +1,129 @@
+﻿jest.cmd : ΓùÅ Validation Warning:
+At line:1 char:11
++ $result = & ".\node_modules\.bin\jest.cmd" --forceExit --no-coverage  ...
++           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ΓùÅ Validation Warning::String) [], RemoteExce 
+   ption
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+  Unknown option "testPathPattern" with value undefined was found.
+  This is probably a typing mistake. Fixing it will remove this message.
+
+  Configuration Documentation:
+  https://jestjs.io/docs/configuration
+
+ΓùÅ Validation Warning:
+
+  Unknown option "testPathPattern" with value undefined was found.
+  This is probably a typing mistake. Fixing it will remove this message.
+
+  Configuration Documentation:
+  https://jestjs.io/docs/configuration
+
+WARNING: TEST_DATABASE_URL not set. Tests will use DATABASE_URL.
+Set TEST_DATABASE_URL in .env to point to a separate test database.
+Test environment ready. DATABASE_URL points to: postgresql://postgres:***@localhost:5432/balancevault
+FAIL tests/ledger.test.js
+  ΓùÅ Ledger integrity ΓÇ║ ledger verification endpoint reports healthy after valid 
+transfers
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+    [0m [90m 58 |[39m
+     [90m 59 |[39m     
+expect(res[33m.[39mstatus)[33m.[39mtoBe([35m200[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 60 |[39m     expect(res[33m.[39mbody[33m.[39mdata[33m.[
+39mhealthy)[33m.[39mtoBe([36mtrue[39m)[33m;[39m
+     [90m    |[39m                                   [31m[1m^[22m[39m
+     [90m 61 |[39m     expect(res[33m.[39mbody[33m.[39mdata[33m.[39minconsistencies)
+[33m.[39mtoHaveLength([35m0[39m)[33m;[39m
+     [90m 62 |[39m   })[33m;[39m
+     [90m 63 |[39m[0m
+
+      at Object.toBe (tests/ledger.test.js:60:35)
+
+[2026-11-10 21:32:42.200 +0530] [33mWARN[39m: [36mAn account with this email address already exists.[39m
+    [35mrequestId[39m: "ecd070d7-1c11-431c-b5e4-ea230ea72a0a"
+    [35mcode[39m: "CONFLICT"
+[2026-11-10 21:32:42.220 +0530] [33mWARN[39m: [36mValidation failed[39m
+    [35mrequestId[39m: "a2551a3c-5e01-4a02-a5a5-9124e3c48ca7"
+    [35mcode[39m: "VALIDATION_ERROR"
+[2026-11-10 21:32:42.235 +0530] [33mWARN[39m: [36mValidation failed[39m
+    [35mrequestId[39m: "ce841bae-332c-4588-8cf9-1171d30cba6a"
+    [35mcode[39m: "VALIDATION_ERROR"
+[2026-11-10 21:32:43.513 +0530] [33mWARN[39m: [36mInvalid email or password.[39m
+    [35mrequestId[39m: "50a8647b-26f7-4ed6-b099-bb564d848b06"
+    [35mcode[39m: "AUTHENTICATION_ERROR"
+[2026-11-10 21:32:43.886 +0530] [33mWARN[39m: [36mInvalid email or password.[39m
+    [35mrequestId[39m: "75b9e558-6a21-4de7-81e7-74f898131ed6"
+    [35mcode[39m: "AUTHENTICATION_ERROR"
+[2026-11-10 21:32:44.269 +0530] [33mWARN[39m: [36mNo authentication token provided.[39m
+    [35mrequestId[39m: "841798c2-ad4a-4caf-bcea-52e06352b232"
+    [35mcode[39m: "AUTHENTICATION_ERROR"
+PASS tests/auth.test.js
+[2026-11-10 21:32:44.289 +0530] [33mWARN[39m: [36mInvalid authentication token.[39m
+    [35mrequestId[39m: "5f7f150f-6f22-4290-85b7-249843761f56"
+    [35mcode[39m: "AUTHENTICATION_ERROR"
+[2026-11-10 21:32:44.701 +0530] [33mWARN[39m: [36mInsufficient balance for this transfer[39m
+    [35mrequestId[39m: "5c58f084-2444-499d-a7bc-7ec545a88ae0"
+    [35mcode[39m: "INSUFFICIENT_FUNDS"
+[2026-11-10 21:32:44.735 +0530] [33mWARN[39m: [36mValidation failed[39m
+    [35mrequestId[39m: "4436cac8-298d-4cb2-b0ee-c9ae2cfb7092"
+    [35mcode[39m: "VALIDATION_ERROR"
+[2026-11-10 21:32:44.762 +0530] [33mWARN[39m: [36mValidation failed[39m
+    [35mrequestId[39m: "48828e55-b139-429c-99f2-1ad6877a1d31"
+    [35mcode[39m: "VALIDATION_ERROR"
+[2026-11-10 21:32:44.791 +0530] [33mWARN[39m: [36mCannot transfer to the same account.[39m
+    [35mrequestId[39m: "66c06b12-dcec-49ed-b5f6-c2b31d7da06d"
+    [35mcode[39m: "VALIDATION_ERROR"
+[2026-11-10 21:32:44.839 +0530] [32mINFO[39m: [36mIdempotent replay[39m
+    [35midempotencyKey[39m: "c859326c-983d-4988-978f-3d140269bd26"
+    [35mrequestId[39m: "9c28680b-3ee2-4eb0-b08c-2b7f423e5a8f"
+[2026-11-10 21:32:44.865 +0530] [33mWARN[39m: [36mIdempotency-Key header is required for this operation[39m
+    [35mrequestId[39m: "7bad9aad-68f7-4ff4-adbf-97e94aa0b3d6"
+    [35mcode[39m: "IDEMPOTENCY_KEY_REQUIRED"
+[2026-11-10 21:32:44.896 +0530] [33mWARN[39m: [36mAccount is not active[39m
+    [35mrequestId[39m: "b4b6e9b0-0b26-413a-903d-0d97091f1121"
+    [35mcode[39m: "ACCOUNT_NOT_ACTIVE"
+PASS tests/transfers.test.js
+[2026-11-10 21:32:45.337 +0530] [33mWARN[39m: [36mAccess denied. Required role: ADMIN. Your role: ACCOUNT_HOLDER[39m
+    [35mrequestId[39m: "8d279f4a-d73f-4e63-a253-f7e133073525"
+    [35mcode[39m: "AUTHORIZATION_ERROR"
+[2026-11-10 21:32:45.372 +0530] [33mWARN[39m: [36mAccess denied. Required role: ADMIN. Your role: ACCOUNT_HOLDER[39m
+    [35mrequestId[39m: "8e99d8aa-96b2-4bbd-8eef-0c55e09ba89d"
+    [35mcode[39m: "AUTHORIZATION_ERROR"
+[2026-11-10 21:32:45.399 +0530] [33mWARN[39m: [36mAccess denied. Required role: ADMIN. Your role: ACCOUNT_HOLDER[39m
+    [35mrequestId[39m: "c2a26fed-feba-409c-8951-24054bac072a"
+    [35mcode[39m: "AUTHORIZATION_ERROR"
+[2026-11-10 21:32:45.431 +0530] [33mWARN[39m: [36mAccess denied. Required role: ADMIN. Your role: ACCOUNT_HOLDER[39m
+    [35mrequestId[39m: "31eed8cb-3d5f-4e62-b5cf-d42c7308be00"
+    [35mcode[39m: "AUTHORIZATION_ERROR"
+[2026-11-10 21:32:45.473 +0530] [33mWARN[39m: [36mYou do not have permission to access this account.[39m
+    [35mrequestId[39m: "a58aae5d-fdd0-42d3-b40e-c90e04544b9a"
+    [35mcode[39m: "AUTHORIZATION_ERROR"
+[2026-11-10 21:32:45.582 +0530] [33mWARN[39m: [36mNo authentication token provided.[39m
+    [35mrequestId[39m: "83a45042-f2d2-436a-8d57-e17c2c4a7233"
+    [35mcode[39m: "AUTHENTICATION_ERROR"
+[2026-11-10 21:32:45.595 +0530] [33mWARN[39m: [36mNo authentication token provided.[39m
+    [35mrequestId[39m: "6d1fcbae-1669-4997-b9de-a5fbe42b01fe"
+    [35mcode[39m: "AUTHENTICATION_ERROR"
+[2026-11-10 21:32:45.606 +0530] [33mWARN[39m: [36mNo authentication token provided.[39m
+    [35mrequestId[39m: "e9dcab42-cd4b-4ddd-87a6-09218fb6283a"
+    [35mcode[39m: "AUTHENTICATION_ERROR"
+[2026-11-10 21:32:45.618 +0530] [33mWARN[39m: [36mNo authentication token provided.[39m
+    [35mrequestId[39m: "14f19918-a1c1-4bce-8450-c592054b9a2e"
+    [35mcode[39m: "AUTHENTICATION_ERROR"
+PASS tests/rbac.test.js
+
+Test Suites: 1 failed, 3 passed, 4 total
+Tests:       1 failed, 30 passed, 31 total
+Snapshots:   0 total
+Time:        6.115 s, estimated 7 s
+Ran all test suites.
+Test teardown complete.
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async 
+operations that kept running after all tests finished?
